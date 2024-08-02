@@ -1,7 +1,9 @@
-"""Implementation of the Alphabet and BatchConverter classes.
+"""
+Implementation of the Alphabet and BatchConverter classes.
 
 This code has been modified from the original implementation
-by Facebook Research, describing its ESM-1b paper."""
+by Facebook Research, describing its ESM-1b paper.
+"""
 
 import itertools
 import os
@@ -14,10 +16,32 @@ from pathlib import Path
 
 
 proteinseq_toks = {
-    'toks': ['L', 'A', 'G', 'V', 'S', 'E', 'R', 'T', 'I', 'D', 'P', 'K', 'Q', 'N', 'F', 'Y', 'M', 'H', 'W', 'C', 'X', 'B', 'U', 'Z', 'O', '.', '-']
+    'toks': ['L', 'A', 'G', 'V',
+             'S', 'E', 'R', 'T', 
+             'I', 'D', 'P', 'K', 
+             'Q', 'N', 'F', 'Y', 
+             'M', 'H', 'W', 'C', 
+             'X', 'B', 'U', 'Z', 
+             'O', '.', '-']
 }
+
 codonseq_toks = {
-    'toks': ['AAA', 'AAU', 'AAC', 'AAG', 'AUA', 'AUU', 'AUC', 'AUG', 'ACA', 'ACU', 'ACC', 'ACG', 'AGA', 'AGU', 'AGC', 'AGG', 'UAA', 'UAU', 'UAC', 'UAG', 'UUA', 'UUU', 'UUC', 'UUG', 'UCA', 'UCU', 'UCC', 'UCG', 'UGA', 'UGU', 'UGC', 'UGG', 'CAA', 'CAU', 'CAC', 'CAG', 'CUA', 'CUU', 'CUC', 'CUG', 'CCA', 'CCU', 'CCC', 'CCG', 'CGA', 'CGU', 'CGC', 'CGG', 'GAA', 'GAU', 'GAC', 'GAG', 'GUA', 'GUU', 'GUC', 'GUG', 'GCA', 'GCU', 'GCC', 'GCG', 'GGA', 'GGU', 'GGC', 'GGG']
+    'toks': ['AAA', 'AAU', 'AAC', 'AAG', 
+             'AUA', 'AUU', 'AUC', 'AUG', 
+             'ACA', 'ACU', 'ACC', 'ACG', 
+             'AGA', 'AGU', 'AGC', 'AGG', 
+             'UAA', 'UAU', 'UAC', 'UAG', 
+             'UUA', 'UUU', 'UUC', 'UUG', 
+             'UCA', 'UCU', 'UCC', 'UCG', 
+             'UGA', 'UGU', 'UGC', 'UGG', 
+             'CAA', 'CAU', 'CAC', 'CAG', 
+             'CUA', 'CUU', 'CUC', 'CUG', 
+             'CCA', 'CCU', 'CCC', 'CCG', 
+             'CGA', 'CGU', 'CGC', 'CGG', 
+             'GAA', 'GAU', 'GAC', 'GAG',
+             'GUA', 'GUU', 'GUC', 'GUG', 
+             'GCA', 'GCU', 'GCC', 'GCG', 
+             'GGA', 'GGU', 'GGC', 'GGG']
 }
 
 
