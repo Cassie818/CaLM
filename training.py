@@ -41,8 +41,9 @@ class CodonModel(pl.LightningModule):
         return self.model(x)
 
     def configure_optimizers(self):
-        optimizer = torch.optim.AdamW(self.parameters(), lr=self.args.learning_rate,
-            weight_decay=self.args.weight_decay)
+        optimizer = torch.optim.AdamW(self.parameters(), 
+                                      lr=self.args.learning_rate,
+                                      weight_decay=self.args.weight_decay)
 
         if self.args.lr_scheduler == 'none':
             return optimizer
