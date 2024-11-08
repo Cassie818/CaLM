@@ -108,7 +108,7 @@ class ProteinBertModel(nn.Module):
         assert tokens.ndim == 2
         padding_mask = tokens.eq(self.padding_idx)  # B, T
 
-        x = self.embed_scale * self.embed_tokens(tokens)
+        x = self.embed_scale * self.embed_tokens(tokens) # B, T, C
 
         if getattr(self.args, "token_dropout", False):
             x.masked_fill_((tokens == self.mask_idx).unsqueeze(-1), 0.0)
